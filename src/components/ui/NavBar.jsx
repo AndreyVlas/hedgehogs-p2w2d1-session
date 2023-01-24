@@ -29,9 +29,13 @@ export default function NavBar({ user }) {
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav">
             <a className="nav-link active" href="/">Home</a>
-            <a className="nav-link" href="/login">Login</a>
-            <a className="nav-link" href="/signup">Signup</a>
-            <a className="nav-link" href="/cars">Cars</a>
+            {!user?.id && (
+              <>
+                <a className="nav-link" href="/login">Login</a>
+                <a className="nav-link" href="/signup">Signup</a>
+              </>
+            )}
+            {user?.id && <a className="nav-link" href="/cars">Cars</a>}
           </div>
         </div>
         {user?.id && <button onClick={logoutHandler} type="button" className="btn btn-dark">Logout</button>}

@@ -17,11 +17,32 @@ apiUserRouter.post('/signup', async (req, res) => {
     if (!created) {
       return res.status(401).send('Email is already in use');
     }
-    req.session.user = user;
+    const newUser = JSON.parse(JSON.stringify(user));
+    delete newUser.hashpass;
+    req.session.user = newUser;
     return res.sendStatus(200);
   } catch (error) {
     console.log(error);
-    res.sendStatus(500);
+    return res.sendStatus(500);
+  }
+});
+
+apiUserRouter.post('/login', async (req, res) => {
+  try {
+    const { email, pass } = req.body;
+    const foundUser = await User.findOne({
+      where: { email },
+    });
+    if (!(foundUser && await bcrypt.compare(pass, foundUser.hashpass))) {
+      return res.sendStatus(401);
+    }
+    const user = JSON.parse(JSON.stringify(foundUser));
+    delete user.hashpass;
+    req.session.user = user;
+    return res.sendStatus(200);
+  } catch (err) {
+    console.log(err);
+    return res.sendStatus(500);
   }
 });
 

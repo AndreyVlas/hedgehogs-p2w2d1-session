@@ -10,7 +10,7 @@ export default function CarsPage({ allCars, user }) {
         <CarForm setCars={setCars} />
       </div>
       <div className="row">
-        {cars?.map((car) => <OneCarCard user={user} car={car} key={car?.id} />)}
+        {cars?.map((car) => <OneCarCard setCars={setCars} user={user} car={car} key={car?.id} />)}
       </div>
     </>
   );
