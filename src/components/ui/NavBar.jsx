@@ -10,7 +10,7 @@ export default function NavBar({ user }) {
       .catch(console.log);
   };
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary">
+    <nav className="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
       <div className="container-fluid">
         {user?.id ? (
           <a className="navbar-brand" href="/">
@@ -29,6 +29,7 @@ export default function NavBar({ user }) {
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav">
             <a className="nav-link active" href="/">Home</a>
+            <a className="nav-link active" href="/callapi">CORS</a>
             {!user?.id && (
               <>
                 <a className="nav-link" href="/login">Login</a>

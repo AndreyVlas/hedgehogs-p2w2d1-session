@@ -1,6 +1,7 @@
 public/app.js
 public/vendor.js
 sessions/
+distr/
 
 # Logs
 logs

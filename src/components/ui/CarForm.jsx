@@ -22,6 +22,12 @@ export default function CarForm({ setCars }) {
           <input type="text" name="model" className="form-control" id="carmodel" />
         </label>
       </div>
+      <div className="mb-3">
+        <label htmlFor="carphoto" className="form-label">
+          Photo
+          <input type="text" name="photo" className="form-control" id="carphoto" />
+        </label>
+      </div>
       <button type="submit" className="btn btn-primary">Add</button>
     </form>
   );

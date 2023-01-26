@@ -47,9 +47,14 @@ apiUserRouter.post('/login', async (req, res) => {
 });
 
 apiUserRouter.get('/logout', (req, res) => {
-  req.session.destroy();
-  res.clearCookie('user_sid');
-  res.sendStatus(200);
+  try {
+    req.session.destroy();
+    res.clearCookie('user_sid');
+    res.sendStatus(200);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
 });
 
 export default apiUserRouter;

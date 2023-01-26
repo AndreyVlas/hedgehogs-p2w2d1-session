@@ -14,6 +14,9 @@ module.exports = {
       model: {
         type: Sequelize.STRING,
       },
+      photo: {
+        type: Sequelize.TEXT,
+      },
       ownerId: {
         type: Sequelize.INTEGER,
         references: {
