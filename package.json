@@ -7,7 +7,7 @@
     "webpack": "webpack -wd eval-source-map",
     "dev": "babel-node src/server.js",
     "start-dev": "webpack -d eval-source-map && babel-node src/server.js",
-    "build": "webpack && babel src --copy-files --out-dir distr",
+    "build": "webpack -d eval-source-map && babel src --copy-files --out-dir distr",
     "start": "node distr/server.js"
   },
   "keywords": [],
