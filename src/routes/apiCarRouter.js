@@ -21,6 +21,16 @@ apiCarRouter.post('/', async (req, res) => {
   }
 });
 
+apiCarRouter.get('/', async (req, res) => {
+  try {
+    const allCars = await Car.findAll();
+    res.json(allCars);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+});
+
 apiCarRouter.patch('/:id', checkPrivMiddleware, (req, res) => {
   res.sendStatus(200);
 });

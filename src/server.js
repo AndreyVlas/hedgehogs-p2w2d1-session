@@ -24,8 +24,8 @@ const sessionConfig = {
   },
 };
 
-app.engine('js', jsxRender);
-app.set('view engine', 'js');
+app.engine('jsx', jsxRender);
+app.set('view engine', 'jsx');
 app.set('views', path.join(__dirname, 'components'));
 
 app.use(cors());
