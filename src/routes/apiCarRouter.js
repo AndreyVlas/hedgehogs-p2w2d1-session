@@ -31,8 +31,14 @@ apiCarRouter.get('/', async (req, res) => {
   }
 });
 
-apiCarRouter.patch('/:id', checkPrivMiddleware, (req, res) => {
-  res.sendStatus(200);
+apiCarRouter.patch('/:id', checkPrivMiddleware, async (req, res) => {
+  try {
+    await Car.update(req.body, { where: { id: req.params.id } });
+    res.sendStatus(200);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
 });
 
 apiCarRouter.delete('/:id', checkPrivMiddleware, async (req, res) => {

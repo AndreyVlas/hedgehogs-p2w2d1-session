@@ -3,6 +3,7 @@ import path from 'path';
 import session from 'express-session';
 import storage from 'session-file-store';
 import cors from 'cors';
+import morgan from 'morgan';
 import apiUserRouter from './routes/apiUserRouter';
 import renderRouter from './routes/renderRouter';
 import jsxRender from './utils/jsxRender';
@@ -24,12 +25,13 @@ const sessionConfig = {
   },
 };
 
-app.engine('js', jsxRender);
-app.set('view engine', 'js');
+app.engine('jsx', jsxRender);
+app.set('view engine', 'jsx');
 app.set('views', path.join(__dirname, 'components'));
 
 app.use(cors());
 app.use(session(sessionConfig));
+app.use(morgan('dev'));
 app.use(express.static('public'));
 app.use(express.json());
 
